@@ -5,9 +5,17 @@
   sudo pacman -S xorg xf86-video-intel mesa alsa-utils alsa-plugins lightdm lightdm-gtk-greeter
   ```
 * Desktop
+  * Common packages
+    ```sh
+    sudo pacman -S dunst nitrogen rofi picom
+    ```
   * `i3`
     ```sh
-    sudo pacman -S i3 picom polybar rofi dunst nitrogen
+    sudo pacman -S i3 polybar
+    ```
+  * `xmonad`
+    ```sh
+    sudo pacman -S xmonad xmonad-contrib xmobar trayer-srg
     ```
 * Shell
   * `fish`
