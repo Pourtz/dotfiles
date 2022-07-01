@@ -15,7 +15,8 @@
     ```
   * `xmonad`
     ```sh
-    sudo pacman -S xmonad xmonad-contrib xmobar trayer-srg
+    sudo pacman -S xmonad xmonad-contrib xmobar
+    yay -S trayer-srg
     ```
 * Shell
   * `fish`
