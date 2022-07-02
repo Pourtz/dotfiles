@@ -33,14 +33,14 @@ msg() {
 
 # Variable passed to rofi
 options="$lock\n$suspend\n$reboot\n$shutdown"
-# IMPORTANT: In xmonad I use mod-shift-q to logout, for i3 add `\n$logout` in the string above.
+# INPORTANT: In xmonad I use mod-shift-q to logout, for i3 add `\n$logout` in the string above.
 
 chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 0)"
 case $chosen in
     $shutdown)
         ans=$(confirm_exit &)
         if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-            shutdown
+            shutdown --poweroff now
         elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
             exit 0
         else
