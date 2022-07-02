@@ -32,14 +32,15 @@ msg() {
 }
 
 # Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$lock\n$suspend\n$reboot\n$shutdown"
+# IMPORTANT: In xmonad I use mod-shift-q to logout, for i3 add `\n$logout` in the string above.
 
 chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 0)"
 case $chosen in
     $shutdown)
         ans=$(confirm_exit &)
         if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-            systemctl poweroff
+            shutdown
         elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
             exit 0
         else
@@ -49,7 +50,7 @@ case $chosen in
     $reboot)
         ans=$(confirm_exit &)
         if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-            systemctl reboot
+            reboot
         elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
             exit 0
         else
@@ -58,9 +59,7 @@ case $chosen in
         ;;
     $lock)
         if [[ -f /usr/bin/i3lock ]]; then
-            i3lock -n -k --time-size=70 --date-size=20 --time-color=282a36ff --date-color=282a36ff --time-align 1 --date-align 1 --time-pos="x+30:h-65" --image /usr/share/backgrounds/screenlock.png
-        elif [[ -f /usr/bin/betterlockscreen ]]; then
-            betterlockscreen -l
+            ~/.config/i3lock/lock.sh
         fi
         ;;
     $suspend)
@@ -78,12 +77,10 @@ case $chosen in
     $logout)
         ans=$(confirm_exit &)
         if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-            if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
-                openbox --exit
-            elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
-                bspc quit
-            elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
+            if [[ "$DESKTOP_SESSION" == "i3" ]]; then
                 i3-msg exit
+            elif [[ "$DESKTOP_SESSION" == "xmonad" ]]; then
+                notify-send "logout"
             fi
         elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
             exit 0
