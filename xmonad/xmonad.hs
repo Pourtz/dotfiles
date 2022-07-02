@@ -209,12 +209,13 @@ myEventHook = docksEventHook <+> fullscreenEventHook
 
 
 ------------------------------------------------------------------------
------------------------------ STARTUP HOOP -----------------------------
+----------------------------- STARTUP HOOK -----------------------------
 ------------------------------------------------------------------------
 myStartupHook = do
   spawn "killall conky"
   spawn "killall trayer"
 
+  spawnOnce "dunst"
   spawnOnce "picom"
   spawnOnce "nm-applet"
 
@@ -264,7 +265,7 @@ main = do
       , ppCurrent = xmobarColor "#50fa7b" "" . wrap "[" "]"
       , ppUrgent = xmobarColor "#ff5555" ""
       , ppTitle = xmobarColor "#50fa7b" "" . shorten 50
-      , ppSep = " | "}
+      , ppSep = " | " }
     }
 
 defaults = def {
