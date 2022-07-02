@@ -12,12 +12,13 @@ import XMonad.Util.Run
 import Xmobar (Monitors(Brightness))
 import Graphics.X11.ExtraTypes.XF86
 import XMonad.Hooks.ManageHelpers
-import XMonad.Layout.Fullscreen
+import XMonad.Layout.Fullscreen (fullscreenEventHook)
 import XMonad.Layout.ToggleLayouts (toggleLayouts, ToggleLayout (Toggle))
 import XMonad.Layout.NoBorders
 
 import Colors.Dracula
 import Language.Haskell.Exts (Token(RULES))
+import XMonad.Config.Prime (doShift)
 
 
 ------------------------------------------------------------------------
@@ -181,24 +182,10 @@ myLayout = toggleLayouts (noBorders Full) (avoidStruts (tiled ||| Mirror tiled |
 -- `xprop | grep WM_CLASS` and click on the client you're interested in.
 -- Window details: 'title', 'className', 'resource'
 myManageHook = composeAll
-  [ className =? "confirm"         --> doFloat
-  , className =? "file_progress"   --> doFloat
-  , className =? "dialog"          --> doFloat
-  , className =? "download"        --> doFloat
-  , className =? "error"           --> doFloat
-  , className =? "Gimp"            --> doFloat
-  , className =? "notification"    --> doFloat
-  , className =? "pinentry-gtk-2"  --> doFloat
-  , className =? "splash"          --> doFloat
-  , className =? "toolbar"         --> doFloat
-  , className =? "Yad"             --> doCenterFloat
-  -- , title =? "Oracle VM VirtualBox Manager"  --> doFloat
-  -- , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
-  -- , className =? "Brave-browser"   --> doShift ( myWorkspaces !! 1 )
-  -- , className =? "mpv"             --> doShift ( myWorkspaces !! 7 )
-  -- , className =? "Gimp"            --> doShift ( myWorkspaces !! 8 )
-  -- , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
-  , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+  [ className =? "discord"         --> doShift ( myWorkspaces !! 8 )
+  , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
+  , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float firefox dialog
+  , (className =? "firefox" <&&> resource =? "Places") --> doFloat
   , isFullscreen --> doFullFloat ]
 
 
