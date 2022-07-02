@@ -1,3 +1,6 @@
+------------------------------------------------------------------------
+-------------------------------- IMPORTS -------------------------------
+------------------------------------------------------------------------
 import XMonad
 import System.Exit
 import qualified XMonad.StackSet as W
@@ -13,46 +16,33 @@ import XMonad.Layout.Fullscreen
 import XMonad.Layout.ToggleLayouts (toggleLayouts, ToggleLayout (Toggle))
 import XMonad.Layout.NoBorders
 
--- The preferred terminal program, which is used in a binding below and by
--- certain contrib modules.
---
-myTerminal = "kitty"
+import Colors.Dracula
+import Language.Haskell.Exts (Token(RULES))
 
--- Whether focus follows the mouse pointer.
-myFocusFollowsMouse = True
-
--- Whether clicking on a window to focus also passes the click to the window
-myClickJustFocuses = False
-
--- Width of the window border in pixels.
---
-myBorderWidth = 1
-
--- mod1Mask -> "left alt" (conflicts with emacs keybindings)
--- mod3Mask -> "right alt"
--- mod4Mask -> "windows key"
---
-myModMask = mod4Mask
-
--- The default number of workspaces (virtual screens) and their names.
--- By default we use numeric strings, but any string may be used as a
--- workspace name. The number of workspaces is determined by the length
--- of this list.
---
--- A tagging example:
---
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
---
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
-
--- Border colors for unfocused and focused windows, respectively.
---
-myNormalBorderColor  = "#282a36"
-myFocusedBorderColor = "#f8f8f2"
 
 ------------------------------------------------------------------------
--- Key bindings. Add, modify or remove key bindings here.
---
+------------------------------ PREFERENCES -----------------------------
+------------------------------------------------------------------------
+myModMask = mod4Mask  -- Sets modkey to super/windows key
+
+myTerminal = "kitty"
+myBrowser = "firefox"
+
+myFocusFollowsMouse = True  -- Whether focus follows the mouse pointer.
+
+myClickJustFocuses = False  -- Whether clicking on a window to focus also passes the click to the window
+
+-- Window borders
+myBorderWidth = 2
+myNormalBorderColor  = colorBack
+myFocusedBorderColor = colorFore
+
+myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+
+
+------------------------------------------------------------------------
+----------------------------- KEY BINDINGS -----------------------------
+------------------------------------------------------------------------
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
@@ -63,6 +53,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch powermenu
     , ((modm .|. shiftMask, xK_p     ), unsafeSpawn "$HOME/.config/scripts/powermenu.sh")
+
+    -- launch browser
+    , ((modm,               xK_b     ), spawn myBrowser)
+
+    -- launch emacs
+    , ((modm,               xK_e     ), spawn "emacs")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -107,10 +103,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_t     ), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
-    , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
+    , ((modm,               xK_comma ), sendMessage (IncMasterN 1))
 
     -- Deincrement the number of windows in the master area
-    , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
+    , ((modm,               xK_period), sendMessage (IncMasterN (-1)))
 
     -- Toggle fullscreen
     , ((modm,               xK_f), sendMessage (Toggle "Full"))
@@ -125,10 +121,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_MonBrightnessDown  ), spawn "xbacklight - 5")
 
     -- Toggle the status bar gap
-    -- Use this binding with avoidStruts from Hooks.ManageDocks.
-    -- See also the statusBar function from Hooks.DynamicLog.
-    --
-    , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io exitSuccess)
@@ -138,27 +131,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     ]
     ++
 
-    --
     -- mod-[1..9], Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
-    --
     [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    ++
-
-    --
-    -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
-    -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
-    --
-    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
 ------------------------------------------------------------------------
--- Mouse bindings: default actions bound to mouse events
---
+---------------------------- MOUSE BINDINGS ----------------------------
+------------------------------------------------------------------------
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
 
     -- mod-button1, Set the window to floating mode and move by dragging
@@ -171,22 +153,12 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modm, button3), \w -> focus w >> mouseResizeWindow w
                                       >> windows W.shiftMaster)
-
-    -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
 
-------------------------------------------------------------------------
--- Layouts:
 
--- You can specify and transform your layouts by modifying these values.
--- If you change layout bindings be sure to use 'mod-shift-space' after
--- restarting (with 'mod-q') to reset your layout state to the new
--- defaults, as xmonad preserves your old layout settings by default.
---
--- The available layouts.  Note that each layout is separated by |||,
--- which denotes layout choice.
---
--- myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+------------------------------------------------------------------------
+-------------------------------- LAYOUTS -------------------------------
+------------------------------------------------------------------------
 myLayout = toggleLayouts (noBorders Full) (avoidStruts (tiled ||| Mirror tiled ||| Full))
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -201,21 +173,13 @@ myLayout = toggleLayouts (noBorders Full) (avoidStruts (tiled ||| Mirror tiled |
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
 
-------------------------------------------------------------------------
--- Window rules:
 
--- Execute arbitrary actions and WindowSet manipulations when managing
--- a new window. You can use this to, for example, always float a
--- particular program, or have a client always appear on a particular
--- workspace.
---
+------------------------------------------------------------------------
+----------------------------- WINDOW RULES -----------------------------
+------------------------------------------------------------------------
 -- To find the property name associated with a program, use
--- > xprop | grep WM_CLASS
--- and click on the client you're interested in.
---
--- To match on the WM_NAME, you can use 'title' in the same way that
--- 'className' and 'resource' are used below.
---
+-- `xprop | grep WM_CLASS` and click on the client you're interested in.
+-- Window details: 'title', 'className', 'resource'
 myManageHook = composeAll
   [ className =? "confirm"         --> doFloat
   , className =? "file_progress"   --> doFloat
@@ -237,32 +201,16 @@ myManageHook = composeAll
   , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
   , isFullscreen --> doFullFloat ]
 
-------------------------------------------------------------------------
--- Event handling
-
--- * EwmhDesktops users should change this to ewmhDesktopsEventHook
---
--- Defines a custom handler function for X Events. The function should
--- return (All True) if the default handler is to be run afterwards. To
--- combine event hooks use mappend or mconcat from Data.Monoid.
---
-myEventHook = fullscreenEventHook
--- docksEventHook <+>
-------------------------------------------------------------------------
--- Status bars and logging
-
--- Perform an arbitrary action on each internal state change or X event.
--- See the 'XMonad.Hooks.DynamicLog' extension for examples.
---
-myLogHook = return ()
 
 ------------------------------------------------------------------------
--- Startup hook
+---------------------------- EVENT HANDLING ----------------------------
+------------------------------------------------------------------------
+myEventHook = docksEventHook <+> fullscreenEventHook
 
--- Perform an arbitrary action each time xmonad starts or is restarted
--- with mod-q.  Used by, e.g., XMonad.Layout.PerWorkspace to initialize
--- per-workspace layout choices.
---
+
+------------------------------------------------------------------------
+----------------------------- STARTUP HOOP -----------------------------
+------------------------------------------------------------------------
 myStartupHook = do
   spawn "killall conky"
   spawn "killall trayer"
@@ -285,9 +233,29 @@ myStartupHook = do
         ++ " --height 19" )
 
   spawnOnce "nitrogen --restore &"
+  spawnOnce ( "xss-lock --transfer-sleep-lock -- i3lock"
+            ++ " --nofork"
+            ++ " --clock"
+            ++ " --{time,date,layout}-color=282a36ff"
+            ++ " --time-align 1"
+            ++ " --date-align 1"
+            ++ " --layout-align 2"
+            ++ " --time-size=70"
+            ++ " --date-size=20"
+            ++ " --time-pos=\"x+30:y+h-65\""
+            ++ " --layout-pos=\"x+w-10:y+h-10\""
+            ++ " --keylayout 1"
+            ++ " --image /usr/share/backgrounds/screenlock.png"
+            ++ " --inside-color=282a3670"
+            ++ " --{ring,{key,bs}hl}-color=50fa7bff"
+            ++ " --{inside,ring}ver-color=6272a4ff"
+            ++ " --{inside,ring}wrong-color=ff5555ff"
+            ++ " --{line,separator,verif,wrong,modif}-color=282a36ff" )
+
 
 ------------------------------------------------------------------------
--- main function
+----------------------------- MAIN FUNCTION ----------------------------
+------------------------------------------------------------------------
 main = do
   xmproc <- spawnPipe "xmobar $HOME/.config/xmobar/xmobarrc"
   xmonad $ docks defaults {
@@ -299,29 +267,24 @@ main = do
       , ppSep = " | "}
     }
 
--- A structure containing your configuration settings, overriding
--- fields in the default config. Any you don't override, will
--- use the defaults defined in xmonad/XMonad/Config.hs
---
 defaults = def {
-      -- simple stuff
-        terminal           = myTerminal,
-        focusFollowsMouse  = myFocusFollowsMouse,
-        clickJustFocuses   = myClickJustFocuses,
-        borderWidth        = myBorderWidth,
-        modMask            = myModMask,
-        workspaces         = myWorkspaces,
-        normalBorderColor  = myNormalBorderColor,
-        focusedBorderColor = myFocusedBorderColor,
+  -- simple stuff
+  terminal           = myTerminal,
+  focusFollowsMouse  = myFocusFollowsMouse,
+  clickJustFocuses   = myClickJustFocuses,
+  borderWidth        = myBorderWidth,
+  modMask            = myModMask,
+  workspaces         = myWorkspaces,
+  normalBorderColor  = myNormalBorderColor,
+  focusedBorderColor = myFocusedBorderColor,
 
-      -- key bindings
-        keys               = myKeys,
-        mouseBindings      = myMouseBindings,
+  -- key bindings
+  keys               = myKeys,
+  mouseBindings      = myMouseBindings,
 
-      -- hooks, layouts
-        layoutHook         = myLayout,
-        manageHook         = myManageHook,
-        handleEventHook    = myEventHook,
-        logHook            = myLogHook,
-        startupHook        = myStartupHook
-    }
+  -- hooks, layouts
+  layoutHook         = myLayout,
+  manageHook         = myManageHook,
+  handleEventHook    = myEventHook,
+  startupHook        = myStartupHook
+}

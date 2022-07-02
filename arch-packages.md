@@ -7,7 +7,8 @@
 * Desktop
   * Common packages
     ```sh
-    sudo pacman -S dunst nitrogen rofi picom
+    sudo pacman -S dunst nitrogen rofi picom xss-lock
+    yay -S i3lock-color
     ```
   * `i3`
     ```sh
