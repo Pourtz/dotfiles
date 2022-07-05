@@ -206,19 +206,16 @@ myStartupHook = do
   spawnOnce "picom"
   spawnOnce "nm-applet"
 
-  spawn ( "sleep 2 && trayer"
+  spawn ("sleep 2 && trayer"
         ++ " --edge top"
         ++ " --align right"
         ++ " --widthtype request"
-        ++ " --padding 6"
-        ++ " --SetDockType true"
-        ++ " --SetPartialStrut true"
-        ++ " --expand true"
-        ++ " --monitor 0"
+        ++ " --height 19"
         ++ " --transparent true"
         ++ " --alpha 0"
-        ++ " --tint 0x00282A36"
-        ++ " --height 19" )
+        ++ " --tint 0x282A36"
+        ++ " --padding 4"
+        ++ " --iconspacing 4" )
 
   spawnOnce "nitrogen --restore &"
   spawnOnce ( "xss-lock --transfer-sleep-lock -- i3lock"
