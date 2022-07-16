@@ -59,7 +59,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_b     ), spawn myBrowser)
 
     -- launch emacs
-    , ((modm,               xK_e     ), spawn "emacs")
+    , ((modm,               xK_e     ), spawn "emacsclient -c -a 'emacs'")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -186,13 +186,17 @@ myManageHook = composeAll
   , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
   , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float firefox dialog
   , (className =? "firefox" <&&> resource =? "Places") --> doFloat
+  , (className =? "firefox" <&&> resource =? "Toolkit") --> doFloat
+  -- , className =? "Godot"           --> doIgnore
+  -- , className =? "godot-example"   --> doFloat
+  -- , resource =? "Godot_Engine"     --> doFloat
   , isFullscreen --> doFullFloat ]
 
 
 ------------------------------------------------------------------------
 ---------------------------- EVENT HANDLING ----------------------------
 ------------------------------------------------------------------------
-myEventHook = docksEventHook <+> fullscreenEventHook
+myEventHook = fullscreenEventHook
 
 
 ------------------------------------------------------------------------
@@ -237,6 +241,7 @@ myStartupHook = do
             ++ " --{inside,ring}wrong-color=ff5555ff"
             ++ " --{line,separator,verif,wrong,modif}-color=282a36ff" )
 
+  spawnOnce "/usr/bin/emacs --daemon"
 
 ------------------------------------------------------------------------
 ----------------------------- MAIN FUNCTION ----------------------------
