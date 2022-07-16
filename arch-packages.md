@@ -7,17 +7,21 @@
 * Desktop
   * Common packages
     ```sh
-    sudo pacman -S dunst nitrogen rofi picom xss-lock
-    yay -S i3lock-color
+    sudo pacman -S dunst rofi picom xss-lock network-manager-applet
+    paru -S i3lock-color
+    ```
+  * `leftwm`
+    ```sh
+    paru -S leftwm leftwm-theme-git polybar feh
     ```
   * `i3`
     ```sh
-    sudo pacman -S i3 polybar
+    sudo pacman -S i3 polybar nitrogen
     ```
   * `xmonad`
     ```sh
-    sudo pacman -S xmonad xmonad-contrib xmobar
-    yay -S trayer-srg
+    sudo pacman -S xmonad xmonad-contrib xmobar nitrogen
+    paru -S trayer-srg
     ```
 * Shell
   * `fish`
@@ -51,14 +55,17 @@ Add to `.bashrc`/`.zshrc`
 export PATH="$HOME/.emacs.d/bin:$PATH"
 ```
 
-## [Yay](https://github.com/Jguer/yay#readme)
+## [Paru](https://github.com/Morganamilo/paru#readme)
 
 ```sh
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+sudo pacman -S --needed base-devel; git clone https://aur.archlinux.org/paru.git; cd paru; makepkg -si
 ```
+
+- Enable `color` in /etc/pacman.conf
+- Enable `BottomUp` in /etc/paru.conf
 
 ## AUR
 
 ```sh
-yay -S pulseaudio-ctl rate-mirrors escrotum-git
+paru -S pulseaudio-ctl rate-mirrors escrotum-git
 ```
