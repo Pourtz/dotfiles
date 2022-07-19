@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Start emacs server
+/usr/bin/emacs --daemon
