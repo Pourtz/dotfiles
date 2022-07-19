@@ -5,12 +5,10 @@
 ```sh
 cargo install bat
 cargo install exa
-cargo install ripgrep
 ```
 
 ```sh
-alias cat="bat"
-alias ls="exa"
+alias ll="exa"
 ```
 
 ## Cargo utilities
