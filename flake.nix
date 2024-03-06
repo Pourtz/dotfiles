@@ -13,7 +13,20 @@
     nixosConfigurations.sisifo = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./system
+        ./system/sisifo.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.pourtz = import ./home;
+        }
+      ];
+    };
+
+    nixosConfigurations.proto = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./system/proto.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
