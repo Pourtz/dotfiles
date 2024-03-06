@@ -1,0 +1,41 @@
+#! /usr/bin/env dash
+
+# Step at which volume increases/decreases
+step=5
+set_vol () {
+    pactl set-sink-volume @DEFAULT_SINK@ "$1"%
+}
+set_mute () {
+    pactl set-sink-mute @DEFAULT_SINK@ "$1"
+}
+set_eww_vol () {
+    eww update VOL="$(pactl get-sink-volume @DEFAULT_SINK@ | awk -F ' ' '{print $5}' | tr -d '[]%')"
+}
+set_eww_mute () {
+    eww update MUTE="$(pactl get-sink-mute @DEFAULT_SINK@ | awk -F ' ' '{print $2}')"
+}
+
+case $1 in
+    set)
+        if [ ! $2 = "" ]; then
+            set_vol $2
+        fi
+        if [ ! $3 = "" ]; then
+            set_mute $3
+        fi
+        set_eww_vol
+        set_eww_mute
+        ;;
+    up)
+        set_vol "+$step"
+        set_eww_vol
+        ;;
+    down)
+        set_vol "-$step"
+        set_eww_vol
+        ;;
+    mute)
+        set_mute toggle
+        set_eww_mute
+        ;;
+esac

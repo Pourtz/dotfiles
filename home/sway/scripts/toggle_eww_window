@@ -1,0 +1,8 @@
+#! /usr/bin/env dash
+# USE: toggle_eww_window [WINDOW_NAME]
+result=$(eww active-windows | grep "^$1")
+if [ "$result" = "" ]; then
+    eww open "$1"
+else
+    eww close "$1"
+fi

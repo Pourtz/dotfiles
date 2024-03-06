@@ -1,0 +1,33 @@
+#!/bin/sh
+
+eth_status=$(cat /sys/class/net/e*/operstate)
+wifi_status=$(cat /sys/class/net/w*/operstate)
+
+icon() {
+        if [ "$eth_status" = "down" ] && [ "$wifi_status" = "down" ]; then
+                echo ""
+        elif [ "$eth_status" = "up" ]; then
+                echo ""
+        elif [ "$wifi_status" = "up" ]; then
+                echo "直"
+        fi
+}
+
+name() {
+        if [ "$eth_status" = "down" ] && [ "$wifi_status" = "down" ]; then
+                echo "Desconectado"
+        elif [ "$eth_status" = "up" ]; then
+                echo "Conectado"
+        elif [ "$wifi_status" = "up" ]; then
+                nmcli | grep "^wl" |
+                        sed 's/\ connected\ to\ //' |
+                        sed 's/\ connecting\ (getting\ IP\ configuration)\ to\ //' |
+                        cut -d ':' -f2
+        fi
+}
+
+case $1 in
+        icon) icon ;;
+        name) name ;;
+        control) alacritty -e nmtui-connect ;;
+esac

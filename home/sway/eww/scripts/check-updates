@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ "$1" = "aur" ]
+then
+    if ! updates=$(paru -Qum 2> /dev/null | wc -l)
+    then updates=0
+    fi
+else
+    if ! updates=$(checkupdates 2> /dev/null | wc -l)
+    then updates=0
+    fi
+fi
+echo "$updates"

@@ -1,0 +1,52 @@
+;; -------------- Window ---------------
+(defwindow panel
+  :monitor 0
+  :geometry (geometry :anchor "top right")
+  :stacking "overlay"
+  :exclusive false
+  :focusable false
+  (panel))
+
+;; ------------- Variables -------------
+
+(defvar BLIGHT "50")
+(defvar VOL "0")
+(defvar MUTE "yes")
+
+(defpoll net-icon :interval "1s" "scripts/network icon")
+(defpoll net-name :interval "1s" "scripts/network name")
+
+(defpoll updates     :interval "5m" :initial "0" "scripts/check-updates")
+(defpoll updates_aur :interval "5m" :initial "0" "scripts/check-updates aur")
+
+;; -------------- Widgets --------------
+
+(defwidget panel []
+  (box :orientation "vertical" :space-evenly "false"
+
+    (card :class "bars_card"
+      (box :class "bright_bar" :spacing 10 :space-evenly "false" :vexpand "false" :hexpand "false"
+        (label :class "iconbright" :text "")
+        (scale :min 0 :max 100 :value BLIGHT :active "false"))
+      (box :class "volume_bar" :spacing 10 :space-evenly "false" :vexpand "false" :hexpand "false"
+        (label :class "iconvol" :text {matches(MUTE, "no") ? "墳" : "婢"})
+        (scale :min 0 :max 100 :value VOL :active "false")))
+
+    (card :class "network_card"
+      (box :orientation "horizontal" :space-evenly "false" :halign "center"
+        (button :class "net-icon" :onclick "scripts/network control" net-icon)
+        (label :class "net-name" :text net-name)))
+
+    (box :orientation "horizontal"
+      (card :class "updates_card" :visible {updates > 0}
+        (box :orientation "horizontal" :space-evenly "false" :halign "center"
+          (button :class "updates-icon" :onclick "scripts/update-packages" "")
+          (label :class "updates-label" :text updates)))
+      (card :class "updates_card" :visible {updates_aur > 0}
+        (box :orientation "horizontal" :space-evenly "false" :halign "center"
+          (button :class "updates-icon" :onclick "scripts/update-packages aur" "")
+          (label :class "updates-label" :text updates_aur))))))
+
+(defwidget card [class ?visible]
+  (box :class class :visible visible :orientation "vertical" :vexpand false :hexpand false
+    (children)))

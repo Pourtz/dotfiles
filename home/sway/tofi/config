@@ -1,0 +1,29 @@
+# WINDOW APPEARANCE
+anchor = center
+width = 20%
+height = 250
+corner-radius = 10
+border-width = 2
+outline-width = 0
+
+# TEXT
+prompt-text = "> "
+result-spacing = 5
+
+# FONT
+font = "JetBrains Mono"
+font-size = 11
+
+# PERFORMANCE
+num-results = 8
+hint-font = false
+late-keyboard-init = true
+
+
+# Catppuccin Mocha
+text-color = #cdd6f4
+prompt-color = #f9e2af
+selection-color = #f9e2af
+background-color = #1e1e2e
+selection-match-color = #89b4fa
+border-color = #89b4fa

@@ -1,0 +1,29 @@
+#! /usr/bin/env dash
+folder=$(echo "$1" | sed 's:^\(.*\)\/$:\1:')
+
+search_command="find $folder -type f -and ( -regex .*\.pdf -or -regex .*\.djvu )"
+trim_folder="sed s:$folder/\(.*\):\1:"
+get_extension="sed s:.*\.\(.*\):\1:"
+
+zathura_command="zathura --fork"
+sioyek_command="sioyek --new-instance"
+
+if [ ! "$($search_command)" ]; then
+    exit
+fi
+
+selected="$($search_command | $trim_folder | tofi --width=45%)"
+if [ ! "$selected" ]; then
+    exit
+fi
+
+# sioyek no lee archivos djvu
+if [ "$(echo "$selected" | $get_extension)" = "pdf" ]; then
+    reader="$(printf "zathura\nsioyek" | tofi)"
+    case $reader in
+        "zathura") $zathura_command "$folder/$selected" ;;
+        "sioyek") $sioyek_command "$folder/$selected" ;;
+    esac
+else
+    $zathura_command "$folder/$selected"
+fi

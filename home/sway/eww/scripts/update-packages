@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$1" = "aur" ]; then
+    alacritty --hold -e paru
+else
+    alacritty --hold -e sudo pacman -Syu
+fi

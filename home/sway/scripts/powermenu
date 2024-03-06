@@ -1,0 +1,17 @@
+#! /usr/bin/env dash
+shutdown_command="systemctl poweroff"
+reboot_command="systemctl reboot"
+suspend_command="systemctl suspend"
+lock_command="$HOME/.config/scripts/lock_screen"  # Sway
+logout_command="swaymsg exit"                     # Sway
+
+tofi_command="tofi --height 175 --width 130"
+
+chosen="$(printf "shutdown\nreboot\nlock\nsuspend\nlogout" | $tofi_command)"
+case $chosen in
+    "shutdown") $shutdown_command ;;
+    "reboot") $reboot_command ;;
+    "lock") $lock_command ;;
+    "suspend") $suspend_command ;;
+    "logout") $logout_command ;;
+esac

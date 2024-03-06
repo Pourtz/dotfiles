@@ -1,0 +1,69 @@
+@import "mocha.scss";
+
+.bars_card, .network_card, .updates_card {
+  background-color: $base;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* System Bars */
+.bars_card {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.iconvol, .iconbright {
+  font-size : 40px;
+}
+.iconvol {
+  color: $blue;
+}
+.iconbright {
+  color: $yellow;
+}
+
+.volume_bar, .bright_bar, scale trough {
+  all: unset;
+  background-color: $surface0;
+  border-radius: 16px;
+  min-height: 16px;
+  min-width: 260px;
+}
+.volume_bar, .bright_bar, scale trough highlight {
+  all: unset;
+  border-radius: 16px;
+}
+.volume_bar scale trough highlight {
+  background-color: $blue;
+}
+.bright_bar scale trough highlight {
+  background-color: $yellow;
+}
+
+/* Network */
+.network_card {
+  padding: 10px;
+}
+.net-name, .net-icon {
+  color: $mauve;
+}
+.net-icon {
+  font-size : 40px;
+  margin-right: 12px;
+}
+.net-name {
+  font-size: 20px;
+}
+
+/* Updates */
+.updates-icon, .updates-label {
+  color: $peach;
+}
+.updates-icon {
+  font-size : 50px;
+  margin-right: 10px;
+}
+.updates-label {
+  font-size: 25px;
+}

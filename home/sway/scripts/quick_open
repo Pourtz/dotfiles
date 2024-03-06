@@ -1,0 +1,18 @@
+#! /usr/bin/env dash
+
+folder=$HOME/ramos
+search_command="fd -tf -e tex main"
+
+if [ ! "$($search_command --base-directory "$folder")" ] ; then
+    exit
+fi
+
+while [ ! -f "$folder/main.tex" ]; do
+    selected="$($search_command --base-directory "$folder" | cut -d'/' -f-1 | uniq | tofi)"
+    if [ ! "$selected" ]; then
+        exit
+    fi
+    folder=$folder/$selected
+done
+
+emacsclient -c -a 'emacs' "$folder/main.tex"

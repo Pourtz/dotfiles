@@ -1,0 +1,89 @@
+@import "mocha.css";
+
+* {
+    border: none;
+    border-radius: 0;
+
+    font-family: "JetBrains Mono";
+
+    font-size: 9pt;
+    font-weight: 600;
+}
+
+window#waybar {
+    color: @text;
+    background-color: @base;
+}
+
+#workspaces button {
+    color: @text;
+    padding: 0 5px;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    color: @text;
+    background: transparent;
+}
+
+#workspaces button.focused {
+    color: @blue;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    margin: 0 4px;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+.modules-center {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#language {
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
