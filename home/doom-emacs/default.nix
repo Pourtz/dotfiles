@@ -41,8 +41,8 @@
     # :lang cc
     clang-tools
     glslang
-    # gcc
-    # valgrind
+    ccls
+    cmake-language-server
     # :lang python
     python3
     black
