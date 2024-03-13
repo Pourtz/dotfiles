@@ -258,8 +258,9 @@ font pango:JetBrains Mono 9.000000
 
 
 for_window [title="Steam - Update News"] floating enable
-for_window [class=" (Emacs) "] opacity 0.8
-for_window [app_id="(Alacritty|org.pwmt.zathura)"] opacity 0.8
+for_window [class="Emacs"] opacity 0.8
+for_window [app_id="Alacritty"] opacity 0.8
+for_window [app_id="org.pwmt.zathura"] opacity 0.95
 
 
 # include catppuccin-mocha

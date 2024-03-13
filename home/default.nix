@@ -38,7 +38,9 @@
     # terminal things
     eza
     bat
+    bat-extras.batman
     neofetch
+    bottom
     direnv
     unzip
     just
@@ -73,6 +75,10 @@
     ".config/onedrive/config".text = ''
       sync_dir = "~/OneDrive"
     '';
+    ".config/bat" = {
+      source = ./bat;
+      recursive = true;
+    };
   };
 
   home.sessionVariables = {
@@ -124,6 +130,7 @@
     shellAliases = {
       ls = "exa -l --group-directories-first";
       sl = "exa -la --group-directories-first";
+      man = "batman";
     };
     shellInit = "set -U fish_greeting";
   };
