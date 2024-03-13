@@ -26,6 +26,10 @@
     consoleLogLevel = 3;
   };
 
+  services.logind.extraConfig = ''
+    HandlePowerKey=suspend
+  '';
+
   # Enable all firmware regardless of license
   hardware.enableAllFirmware = true;
 

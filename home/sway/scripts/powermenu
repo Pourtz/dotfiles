@@ -2,7 +2,7 @@
 shutdown_command="systemctl poweroff"
 reboot_command="systemctl reboot"
 suspend_command="systemctl suspend"
-lock_command="$HOME/.config/scripts/lock_screen"  # Sway
+lock_command="swaylock"  # Sway
 logout_command="swaymsg exit"                     # Sway
 
 tofi_command="tofi --height 175 --width 130"

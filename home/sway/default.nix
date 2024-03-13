@@ -39,6 +39,10 @@ in {
     executable = true;
   };
 
+  # SWAYLOCK
+  programs.swaylock.enable = true;
+  home.file.".config/swaylock/config".source = swaylock/config;
+
   # WAYBAR
   programs.waybar = {
     enable = true;
