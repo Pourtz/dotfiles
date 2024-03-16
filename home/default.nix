@@ -20,7 +20,7 @@
   home.packages = with pkgs; [
     neovim
 
-    # firefox
+    firefox
     qutebrowser
     discord
     spotify
