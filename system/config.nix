@@ -97,7 +97,10 @@
   };
 
   # Printing
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [pkgs.hplipWithPlugin];
+  };
   services.avahi = {
     enable = true;
     nssmdns4 = true;
