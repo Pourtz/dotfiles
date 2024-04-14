@@ -29,7 +29,7 @@
     piper # mouse config
     feh
     # mpv
-    # libreoffice-fresh
+    libreoffice-fresh
     # inkscape
     godot_4
     # itch
