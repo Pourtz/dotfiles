@@ -29,7 +29,7 @@
     # :lang markdown
     pandoc
     # :lang nix
-    nixfmt
+    nixfmt-classic
     # :lang sh
     shellcheck
     shfmt

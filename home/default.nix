@@ -26,6 +26,7 @@
     spotify
     zathura
     sioyek
+    evince
     piper # mouse config
     feh
     # mpv
@@ -34,6 +35,7 @@
     godot_4
     # itch
     telegram-desktop
+    zoom-us
 
     # terminal things
     eza
@@ -45,6 +47,7 @@
     unzip
     just
     nix-output-monitor
+    skim
 
     # sage
 
@@ -131,6 +134,7 @@
       ls = "exa -l --group-directories-first";
       sl = "exa -la --group-directories-first";
       man = "batman";
+      fpdf = "zathura --fork $(find . -type f -and -regex '.*\\.pdf' | sk)";
     };
     shellInit = "set -U fish_greeting";
   };
@@ -152,7 +156,7 @@
     mimeApps = {
       enable = true;
       defaultApplications = {
-        # "application/pdf" = "org.pwmt.zathura.desktop";
+        "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
         "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
       };
     };
