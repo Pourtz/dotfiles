@@ -191,6 +191,7 @@ bindsym $mod+Shift+y exec $scripts-folder/quick_open
 bindsym $mod+Tab exec $scripts-folder/toggle_eww_window "panel"
 bindsym $mod+p exec $scripts-folder/powermenu
 bindsym $mod+t exec $scripts-folder/open_pdfs $HOME/OneDrive/Textos
+bindsym $mod+Shift+p exec $scripts-folder/open_pdfs $HOME/OneDrive/Papers
 # Volume
 bindsym XF86AudioLowerVolume exec $scripts-folder/volume down
 bindsym XF86AudioMute exec $scripts-folder/volume mute

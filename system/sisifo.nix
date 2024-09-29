@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }@inputs: {
   imports = [ ./hardware-sisifo.nix ./config.nix ];
   networking.hostName = "sisifo";
 

@@ -1,10 +1,9 @@
 { config, pkgs, lib, ... }: {
   services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = (with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
     gnome-photos
     gnome-tour
     gedit # text editor
-  ]) ++ (with pkgs.gnome; [
     cheese # webcam tool
     gnome-music
     gnome-terminal
@@ -17,5 +16,5 @@
     iagno # go game
     hitori # sudoku game
     atomix # puzzle game
-  ]);
+  ];
 }

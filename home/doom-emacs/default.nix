@@ -36,6 +36,8 @@
     # :term vterm
     gnumake
     cmakeMinimal
+    gcc
+    libtool
     # :tools direnv
     direnv
     # :lang cc

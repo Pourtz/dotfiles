@@ -6,24 +6,24 @@ trim_folder="sed s:$folder/\(.*\):\1:"
 get_extension="sed s:.*\.\(.*\):\1:"
 
 zathura_command="zathura --fork"
-sioyek_command="sioyek --new-instance"
+sioyek_command="sioyek --new-window"
 
 if [ ! "$($search_command)" ]; then
-    exit
+  exit
 fi
 
 selected="$($search_command | $trim_folder | tofi --width=45%)"
 if [ ! "$selected" ]; then
-    exit
+  exit
 fi
 
 # sioyek no lee archivos djvu
 if [ "$(echo "$selected" | $get_extension)" = "pdf" ]; then
-    reader="$(printf "zathura\nsioyek" | tofi)"
-    case $reader in
-        "zathura") $zathura_command "$folder/$selected" ;;
-        "sioyek") $sioyek_command "$folder/$selected" ;;
-    esac
+  reader="$(printf "zathura\nsioyek" | tofi)"
+  case $reader in
+  "zathura") $zathura_command "$folder/$selected" ;;
+  "sioyek") $sioyek_command "$folder/$selected" ;;
+  esac
 else
-    $zathura_command "$folder/$selected"
+  $zathura_command "$folder/$selected"
 fi
