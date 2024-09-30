@@ -7,9 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, ... }: {
+  outputs = { self, home-manager, nixpkgs, nixvim, ... }@inputs: {
     nixosConfigurations.sisifo = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -18,6 +23,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.pourtz = import ./home;
         }
       ];

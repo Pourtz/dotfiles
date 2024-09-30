@@ -3,8 +3,8 @@
     enable = true;
     settings = {
       font = {
-        normal.family = "Terminus";
-        size = 12;
+        normal.family = "JetBrains Mono";
+        size = 10;
       };
       cursor = {
         style = {
