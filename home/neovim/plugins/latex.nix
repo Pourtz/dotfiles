@@ -24,6 +24,9 @@
       tex_flavor="latex";
     };
 
-    opts.conceallevel = 2;
+    opts.conceallevel = 0;
+
+    # Disable nvim-autopairs in tex files
+    plugins.nvim-autopairs.settings.disable_filetype = [ "tex" ];
   };
 }

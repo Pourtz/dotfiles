@@ -5,9 +5,6 @@
       settings = {
         sources = [
           { name = "calc"; }
-          { name = "cmdline"; }
-          { name = "cmdline_history"; }
-          { name = "fuzzy_buffer"; }
           { name = "fuzzy_path"; }
           { name = "nvim_lsp"; }
           { name = "nvim_lua"; }

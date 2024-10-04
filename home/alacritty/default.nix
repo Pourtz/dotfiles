@@ -4,7 +4,7 @@
     settings = {
       font = {
         normal.family = "JetBrains Mono";
-        size = 10;
+        size = 9;
       };
       cursor = {
         style = {
