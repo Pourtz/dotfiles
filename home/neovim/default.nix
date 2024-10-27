@@ -2,6 +2,8 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./options.nix
+    ./keybinds.nix
+    ./autocommands.nix
     ./plugins
   ];
   # home.packages = with pkgs; [ gcc gnumake git ripgrep fd unzip ];
@@ -20,7 +22,6 @@
       # Set <space> as the leader key
       mapleader = " ";
       maplocalleader = " ";
-      have_nerd_font = false;
     };
     viAlias = true;
     vimAlias = true;

@@ -267,7 +267,7 @@ for_window [app_id="org.pwmt.zathura"] opacity 0.95
 # Startup
 #
 exec eww daemon
-exec emacs --daemon
+# exec emacs --daemon
 exec $scripts-folder/brightness set 50
 exec $scripts-folder/volume set && $scripts-folder/volume set 20 1
 exec dbus-sway-environment

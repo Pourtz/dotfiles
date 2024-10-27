@@ -30,7 +30,7 @@ return {
 
   -- Sum
   s({trig="sum", snippetType="autosnippet", desc="Sum with lower and upper limits", wordTrig=false, condition=inMathMode},
-    fmta([[\sum<><><> <> ]],
+    fmta([[\sum<><><> <>]],
       {
         f(returnIfNotEmpty, {1}, {user_args = {"_{"}}),
         i(1),
@@ -55,7 +55,7 @@ return {
 
   -- Integral
   s({trig="int", snippetType="autosnippet", desc="Integral with lower and upper limits", wordTrig=false, condition=inMathMode},
-    fmta([[\int<><><> <> \,d<> ]],
+    fmta([[\int<><><> <> \,d<>]],
       {
         f(returnIfNotEmpty, {1}, {user_args = {"_{"}}),
         i(1),
@@ -82,9 +82,9 @@ return {
   s({trig="fra", snippetType="autosnippet", desc="Fraction", wordTrig=false, condition=inMathMode},
     {
       c(1, {
-        sn(nil, fmta([[\frac{<>}{<>} ]], {r(1, "f1"), r(2, "f2")})),
-        sn(nil, fmta([[\dfrac{<>}{<>} ]], {r(1, "f1"), r(2, "f2")})),
-        sn(nil, fmta([[\tfrac{<>}{<>} ]], {r(1, "f1"), r(2, "f2")})),
+        sn(nil, fmta([[\frac{<>}{<>}]], {r(1, "f1"), r(2, "f2")})),
+        sn(nil, fmta([[\dfrac{<>}{<>}]], {r(1, "f1"), r(2, "f2")})),
+        sn(nil, fmta([[\tfrac{<>}{<>}]], {r(1, "f1"), r(2, "f2")})),
       }),
     }, {
       stored = {
@@ -96,22 +96,25 @@ return {
 
   -- Left-Right pair
   s({trig="lr", snippetType="autosnippet", desc="Pair of left-right", wordTrig=true, condition=inMathMode},
-    fmta([[\left<> <> \right<> ]], {i(1), i(3), i(2),})
+    fmta([[\left<><>\right<>]], {i(1), i(3), i(2),})
   ),
 
   -- Parenthesis
-  s({trig="prent", snippetType="autosnippet", desc="Parenthesis", wordTrig=true, condition=inMathMode},
+  s({trig="prent", snippetType="autosnippet", desc="Parenthesis", wordTrig=false, condition=inMathMode},
     {
       c(1, {
-        sn(nil, fmta([[\prent{<>} ]], {r(1, "r1"),})),
-        sn(nil, fmta([[\prentc{<>} ]], {r(1, "r1"),})),
-        sn(nil, fmta([[\prentb{<>} ]], {r(1, "r1"),})),
+        sn(nil, fmta([[\prent{<>}]], {r(1, "r1"),})),
+        sn(nil, fmta([[\prentc{<>}]], {r(1, "r1"),})),
+        sn(nil, fmta([[\prentb{<>}]], {r(1, "r1"),})),
       }),
     }, {
       stored = {
         ["r1"] = i(1),
       }
     }
+  ),
+  s({trig="(", snippetType="autosnippet", desc="Simple parenthesis", wordTrig=false, condition=inMathMode},
+    fmta([[(<>)]], {i(1)})
   ),
 
   s({trig="set", snippetType="autosnippet", desc="Set command", wordTrig=true, condition=inMathMode},
@@ -124,7 +127,7 @@ return {
   ),
 
   -- lim, liminf, limsup (lim)
-  s({trig="lim", snippetType="autosnippet", desc="Limits", wordTrig=true, condition=inMathMode},
+  s({trig="lim", snippetType="autosnippet", desc="Limits", wordTrig=false, condition=inMathMode},
     {
       c(1, {
         sn(nil, fmta([[\lim_{<>} ]], {r(1, "r1"),})),
@@ -200,34 +203,34 @@ return {
     )
   ),
 
-  -- inf
-  s({trig="inf", snippetType="snippet", desc="Infimum", wordTrig=false, condition=inMathMode},
-    fmta([[\inf<><><> ]],
-      {
-        f(returnIfNotEmpty, {1}, {user_args = {"_{"}}),
-        i(1),
-        f(returnIfNotEmpty, {1}, {user_args = {"}"}})
-      }
-    )
-  ),
+  -- -- inf
+  -- s({trig="inf", snippetType="autosnippet", desc="Infimum", wordTrig=false, condition=inMathMode},
+  --   fmta([[\inf<><><> ]],
+  --     {
+  --       f(returnIfNotEmpty, {1}, {user_args = {"_{"}}),
+  --       i(1),
+  --       f(returnIfNotEmpty, {1}, {user_args = {"}"}})
+  --     }
+  --   )
+  -- ),
 
-  -- sup
-  s({trig="sup", snippetType="snippet", desc="Supremum", wordTrig=false, condition=inMathMode},
-    fmta([[\sup<><><> ]],
-      {
-        f(returnIfNotEmpty, {1}, {user_args = {"_{"}}),
-        i(1),
-        f(returnIfNotEmpty, {1}, {user_args = {"}"}})
-      }
-    )
-  ),
+  -- -- sup
+  -- s({trig="sup", snippetType="autosnippet", desc="Supremum", wordTrig=false, condition=inMathMode},
+  --   fmta([[\sup<><><> ]],
+  --     {
+  --       f(returnIfNotEmpty, {1}, {user_args = {"_{"}}),
+  --       i(1),
+  --       f(returnIfNotEmpty, {1}, {user_args = {"}"}})
+  --     }
+  --   )
+  -- ),
 
   -- sqrt, root (root)
   s({trig="root", snippetType="autosnippet", desc="Square root or general root", wordTrig=false, condition=inMathMode},
     {
       c(1, {
-        sn(nil, fmta([[\sqrt{<>} ]], {r(1, "r1")})),
-        sn(nil, fmta([[\sqrt[<>]{<>} ]], {r(1, "r2"), r(2, "r1")})),
+        sn(nil, fmta([[\sqrt{<>}]], {r(1, "r1")})),
+        sn(nil, fmta([[\sqrt[<>]{<>}]], {r(1, "r2"), r(2, "r1")})),
       }),
     }, {
       stored = {

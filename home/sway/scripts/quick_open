@@ -15,4 +15,5 @@ while [ ! -f "$folder/main.tex" ]; do
     folder=$folder/$selected
 done
 
-emacsclient -c -a 'emacs' "$folder/main.tex"
+# emacsclient -c -a 'emacs' "$folder/main.tex"
+alacritty --working-directory "$folder" -e "nvim" "$folder/main.tex"

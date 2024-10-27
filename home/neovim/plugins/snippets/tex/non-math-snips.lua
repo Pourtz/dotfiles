@@ -23,7 +23,6 @@ return {
       \[
         <>
       \]
-
       ]],
       {i(1),}
     )
@@ -47,7 +46,6 @@ return {
       \begin{<>}
         <>
       \end{<>}
-
       ]],
       {i(1), i(2), rep(1),}
     )
@@ -61,13 +59,11 @@ return {
           \begin{align*}
             <>
           \end{align*}
-
           ]], {r(1, "r1")})),
         sn(nil, fmta([[
           \begin{align}
             <>
           \end{align}
-
           ]], {r(1, "r1")})),
       }),
     },
@@ -80,7 +76,6 @@ return {
       \begin{enumerate}
         <>
       \end{enumerate}
-
       ]],
       {i(1)}
     )
@@ -92,7 +87,6 @@ return {
       \begin{itemize}
         <>
       \end{itemize}
-
       ]],
       {i(1)}
     )
@@ -109,7 +103,6 @@ return {
       \begin{definicion}
         <>
       \end{definicion}
-
       ]],
       {i(1)}
     )
@@ -120,7 +113,6 @@ return {
       \begin{prop}
         <>
       \end{prop}
-
       ]],
       {i(1)}
     )
@@ -131,7 +123,6 @@ return {
       \begin{lema}
         <>
       \end{lema}
-
       ]],
       {i(1)}
     )
@@ -142,7 +133,6 @@ return {
       \begin{teorema}
         <>
       \end{teorema}
-
       ]],
       {i(1)}
     )
@@ -153,7 +143,6 @@ return {
       \begin{corolario}
         <>
       \end{corolario}
-
       ]],
       {i(1)}
     )
@@ -164,7 +153,6 @@ return {
       \begin{obs}
         <>
       \end{obs}
-
       ]],
       {i(1)}
     )
@@ -175,7 +163,6 @@ return {
       \begin{ejemplo}
         <>
       \end{ejemplo}
-
       ]],
       {i(1)}
     )
@@ -186,7 +173,6 @@ return {
       \begin{dem}
         <>
       \end{dem}
-
       ]],
       {i(1)}
     )
@@ -197,7 +183,6 @@ return {
       \begin{sol}
         <>
       \end{sol}
-
       ]],
       {i(1)}
     )
@@ -224,21 +209,6 @@ return {
   ),
 
   -- TODO: figure (fig)
-
-  -- emph
-  s({trig="emph", snippetType="snippet", desc="Emphasis", condition=notInMathMode},
-    fmta([[\emph{<>}]], {i(1),})
-  ),
-
-  -- textbf (bft)
-  s({trig="tbf", snippetType="snippet", desc="Bold text", condition=notInMathMode},
-    fmta([[\textbf{<>}]], {i(1),})
-  ),
-
-  -- textit (itt)
-  s({trig="tit", snippetType="snippet", desc="Italic text", condition=notInMathMode},
-    fmta([[\textit{<>}]], {i(1),})
-  ),
 
   -- usepackage (pkg)
   s({

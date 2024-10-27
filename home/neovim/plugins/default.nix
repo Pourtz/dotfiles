@@ -7,20 +7,32 @@
   programs.nixvim = {
     # Lazy plugin manager
     plugins = {
-      lualine.enable = true;
       nix.enable = true;
+      lualine.enable = true;
+
       notify.enable = true;
-      numbertoggle.enable = true;
+      # numbertoggle.enable = true;
       nvim-autopairs.enable = true;
       trim.enable = true;
       rainbow-delimiters.enable = true;
-      project-nvim.enable = true;
+      # project-nvim.enable = true;
       neogit.enable = true;
-      mini.enable = true;
-      indent-o-matic.enable = true;
+      mini = {
+        enable = true;
+        # modules = {
+        # };
+      };
+      indent-o-matic = {
+        enable = true;
+        settings.skip_multiline = true;
+      };
       which-key.enable = true;
 
+      telescope.enable = true;
+      treesitter.enable = true;
+
       neo-tree.enable = true;
+      lsp.enable = true;
       web-devicons.enable = true;
 
       toggleterm = {
@@ -35,9 +47,8 @@
         };
       };
 
-
       # Default kickstart.nvim
-      sleuth.enable = true;
+      # sleuth.enable = true;
       todo-comments = {
         enable = true;
         settings.signs = true;
