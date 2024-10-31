@@ -9,28 +9,26 @@
   # home.packages = with pkgs; [ gcc gnumake git ripgrep fd unzip ];
   programs.nixvim = {
     enable = true;
-
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
     # performance = {
     #   byteCompileLua = {
     #     enable = true;
     #     plugins = true;
     #   };
-    #   combinePlugins.enable = true;
+    #   # combinePlugins.enable = true;
     # };
-
     globals = {
       # Set <space> as the leader key
       mapleader = " ";
       maplocalleader = " ";
     };
-    viAlias = true;
-    vimAlias = true;
-
     clipboard = {
       register = "unnamedplus";
       providers.wl-copy.enable = true;
     };
-
     colorschemes.catppuccin.enable = true;
+    withRuby = false;
   };
 }

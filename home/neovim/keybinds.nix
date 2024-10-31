@@ -34,6 +34,11 @@
         group = "Project";
         mode = "n";
       }
+      {
+        __unkeyed-1 = "<leader>b";
+        group = "Buffer";
+        mode = "n";
+      }
     ];
 
     keymaps = [
@@ -66,36 +71,24 @@
         action = "<cmd>Neotree toggle<CR>";
         options.desc = "Toggle project tree";
       }
-    #   { # Diagnostic keymaps
-    #     mode = "n";
-    #     key = "<leader>q";
-    #     action = { __raw = "vim.diagnostic.setloclist"; };
-    #     options.desc = "Open diagnostic [Q]uickfix list";
-    #   }
-    #   {
-    #     mode = "n";
-    #     key = "<C-h>";
-    #     action = "<C-w><C-h>";
-    #     options.desc = "Move focus to the left window";
-    #   }
-    #   {
-    #     mode = "n";
-    #     key = "<C-l>";
-    #     action = "<C-w><C-l>";
-    #     options.desc = "Move focus to the right window";
-    #   }
-    #   {
-    #     mode = "n";
-    #     key = "<C-j>";
-    #     action = "<C-w><C-j>";
-    #     options.desc = "Move focus to the lower window";
-    #   }
-    #   {
-    #     mode = "n";
-    #     key = "<C-k>";
-    #     action = "<C-w><C-k>";
-    #     options.desc = "Move focus to the upper window";
-    #   }
+      {
+        mode = "n";
+        key = "<leader>pp";
+        action = "<cmd>Telescope projects<CR>";
+        options.desc = "Open project list";
+      }
+      {
+        mode = "n";
+        key = "<leader><leader>";
+        action = "<cmd>Telescope find_files<CR>";
+        options.desc = "Find file";
+      }
+      {
+        mode = "n";
+        key = "<leader>bb";
+        action = "<cmd>Telescope buffers<CR>";
+        options.desc = "Open buffers";
+      }
     ];
   };
 }

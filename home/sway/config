@@ -16,7 +16,8 @@ set $right l
 # Terminal emulator
 set $term alacritty
 set $browser qutebrowser
-set $editor emacsclient -c -a 'emacs'
+# set $editor emacsclient -c -a 'emacs'
+set $editor alacritty -e "nvim"
 set $scripts-folder $HOME/.config/scripts
 # Application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened

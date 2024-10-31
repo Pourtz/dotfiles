@@ -2,6 +2,10 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      general = {
+        import = [ "~/.config/alacritty/catppuccin-mocha.toml" ];
+        live_config_reload = true;
+      };
       font = {
         normal.family = "JetBrains Mono";
         size = 9;
@@ -14,12 +18,12 @@
         vi_mode_style = "Block";
         unfocused_hollow = false;
       };
-      live_config_reload = true;
-      shell = {
-        program = "${pkgs.fish}/bin/fish";
-        args = [ "--login" ];
+      terminal = {
+        shell = {
+          program = "${pkgs.fish}/bin/fish";
+          args = [ "--login" ];
+        };
       };
-      "import" = [ "~/.config/alacritty/catppuccin-mocha.toml" ];
     };
   };
   home.file.".config/alacritty/catppuccin-mocha.toml".source =

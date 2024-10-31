@@ -1,5 +1,11 @@
 { config, pkgs, lib, inputs, ... }: {
-  imports = [ ./alacritty ./starship.nix ./sway ./doom-emacs ./neovim ];
+  imports = [
+    ./alacritty
+    ./starship.nix
+    ./sway
+    # ./doom-emacs
+    ./neovim
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pourtz";
@@ -20,33 +26,34 @@
   home.packages = with pkgs; [
     firefox
     qutebrowser
-    discord
-    spotify
+    # discord
+    # spotify
     zathura
     sioyek
-    evince
+    # evince
     piper # mouse config
     feh
     # mpv
     libreoffice-fresh
     # inkscape
-    godot_4
+    # godot_4
     # itch
-    telegram-desktop
-    zoom-us
+    # telegram-desktop
+    # zoom-us
 
     # terminal things
     eza
     bat
     bat-extras.batman
-    neofetch
+    fd
+    # neofetch
     bottom
-    direnv
+    # direnv
     unzip
     just
     nix-output-monitor
-    skim
-    darktable
+    # skim
+    # darktable
     tectonic
 
     # sage

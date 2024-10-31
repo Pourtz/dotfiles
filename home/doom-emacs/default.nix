@@ -51,7 +51,6 @@
     python311Packages.pyflakes
     isort
     pipenv
-    python311Packages.nose
     python311Packages.pytest
     python311Packages.setuptools
   ];

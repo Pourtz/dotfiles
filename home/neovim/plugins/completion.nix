@@ -15,6 +15,7 @@
           end
         '';
         completion.completeopt = "menu,menuone,noinsert";
+        # TODO: map autocompletion controls differently
         mapping = {
           # Expand or accept the snippet
           "<CR>" = ''
