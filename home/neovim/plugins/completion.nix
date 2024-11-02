@@ -37,8 +37,6 @@
             cmp.mapping(function(fallback)
               if cmp.visible() then
                 cmp.select_next_item()
-              elseif require("luasnip").locally_jumpable(1) then
-                require("luasnip").jump(1)
               else
                 fallback()
               end
@@ -50,8 +48,6 @@
             cmp.mapping(function(fallback)
               if cmp.visible() then
                 cmp.select_prev_item()
-              elseif require("luasnip").locally_jumpable(-1) then
-                require("luasnip").jump(-1)
               else
                 fallback()
               end
@@ -63,6 +59,28 @@
             cmp.mapping(function(fallback)
               if require("luasnip").choice_active() then
                 require("luasnip").change_choice(1)
+              else
+                fallback()
+              end
+            end, { "i", "s" })
+          '';
+
+          # TODO: Jump forward in the snippet
+          "<C-l>" = ''
+            cmp.mapping(function(fallback)
+              if require("luasnip").locally_jumpable(1) then
+                require("luasnip").jump(1)
+              else
+                fallback()
+              end
+            end, { "i", "s" })
+          '';
+
+          # TODO: Jump backward in the snippet
+          "<C-k>" = ''
+            cmp.mapping(function(fallback)
+              if require("luasnip").locally_jumpable(-1) then
+                require("luasnip").jump(-1)
               else
                 fallback()
               end
