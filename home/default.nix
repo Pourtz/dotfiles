@@ -55,6 +55,9 @@
     # skim
     # darktable
     tectonic
+    taskwarrior3
+    tasksh
+    timewarrior
 
     # sage
 

@@ -15,7 +15,6 @@
           end
         '';
         completion.completeopt = "menu,menuone,noinsert";
-        # TODO: map autocompletion controls differently
         mapping = {
           # Expand or accept the snippet
           "<CR>" = ''
@@ -65,7 +64,6 @@
             end, { "i", "s" })
           '';
 
-          # TODO: Jump forward in the snippet
           "<C-l>" = ''
             cmp.mapping(function(fallback)
               if require("luasnip").locally_jumpable(1) then
@@ -76,7 +74,6 @@
             end, { "i", "s" })
           '';
 
-          # TODO: Jump backward in the snippet
           "<C-k>" = ''
             cmp.mapping(function(fallback)
               if require("luasnip").locally_jumpable(-1) then
