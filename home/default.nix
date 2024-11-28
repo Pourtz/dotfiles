@@ -52,7 +52,7 @@
     unzip
     just
     nix-output-monitor
-    # skim
+    skim
     # darktable
     tectonic
     taskwarrior3
