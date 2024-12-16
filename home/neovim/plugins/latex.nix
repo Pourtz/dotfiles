@@ -20,8 +20,10 @@
     };
 
     globals = {
-      tex_conceal="abdmg";
-      tex_flavor="latex";
+      tex_conceal = "abdmg";
+      tex_flavor = "latex";
+      vimtex_fold_enabled = "1";
+      vimtex_format_enabled = "1";
     };
 
     opts.conceallevel = 0;

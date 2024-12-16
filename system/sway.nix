@@ -75,7 +75,11 @@ in {
 
   programs.nm-applet.enable = true;
 
-  fonts.packages = with pkgs; [ terminus_font jetbrains-mono nerdfonts ];
+  fonts.packages = with pkgs; [
+    terminus_font
+    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+  ];
 
   hardware.pulseaudio.enable = false;
   services.pipewire = {
