@@ -26,7 +26,7 @@
   home.packages = with pkgs; [
     firefox
     qutebrowser
-    # discord
+    discord
     # spotify
     zathura
     sioyek
@@ -48,7 +48,7 @@
     fd
     # neofetch
     bottom
-    # direnv
+    direnv
     unzip
     just
     nix-output-monitor
@@ -59,7 +59,7 @@
     tasksh
     timewarrior
 
-    # sage
+    sage
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
