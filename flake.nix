@@ -25,19 +25,22 @@
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.pourtz = import ./home;
+          home-manager.backupFileExtension = "backup";
         }
       ];
     };
 
-    nixosConfigurations.proto = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.dedalo = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./system/proto.nix
+        ./system/dedalo.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.pourtz = import ./home;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.backupFileExtension = "backup";
         }
       ];
     };
