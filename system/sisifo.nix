@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }@inputs: {
-  imports = [ ./hardware-sisifo.nix ./config.nix ];
+  imports = [
+    ./hardware-sisifo.nix
+    ./config.nix
+  ];
   networking.hostName = "sisifo";
 
   # This option defines the first version of NixOS you have installed on this particular machine,

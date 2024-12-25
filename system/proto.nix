@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }: {
-  imports = [ ./hardware-proto.nix ./config.nix ./steam.nix ];
+  imports = [
+    ./hardware-proto.nix
+    ./config.nix
+    ./steam.nix
+  ];
   networking.hostName = "proto";
 
   # This option defines the first version of NixOS you have installed on this particular machine,
