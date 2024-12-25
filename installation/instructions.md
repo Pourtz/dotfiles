@@ -19,6 +19,13 @@ sudo dd if=./result/iso/nixos-20.03....-x86_64-linux.iso of=/dev/<usb device> bs
 | EFI       | 512M |
 | Swap      | 8G   |
 | Root      | Rest |
+```bash
+parted /dev/<device> -- mklabel gpt
+parted /dev/<device> -- mkpart ESP fat32 1MB 513MB
+parted /dev/<device> -- set 1 esp on
+parted /dev/<device> -- mkpart swap linux-swap -8GB 100%
+parted /dev/<device> -- mkpart root btrfs 513MB -8GB
+```
 
 2. Use dm-crypt to encrypt the root partition, which would be available at `/dev/mapper/enc` after running this commands
 ```bash
