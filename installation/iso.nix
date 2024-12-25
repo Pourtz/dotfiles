@@ -12,7 +12,6 @@
     git
     wget
     neovim
-    just
     gparted
     nix-prefetch-scripts
   ];
