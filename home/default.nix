@@ -3,8 +3,8 @@
     ./alacritty
     ./starship.nix
     ./sway
-    # ./doom-emacs
     ./neovim
+    ./games.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -28,16 +28,15 @@
     qutebrowser
     discord
     # spotify
+    # yewtube
     zathura
     sioyek
     # evince
     piper # mouse config
     feh
-    # mpv
+    mpv
     libreoffice-fresh
     # inkscape
-    # godot_4
-    # itch
     # telegram-desktop
     # zoom-us
 
@@ -46,7 +45,6 @@
     bat
     bat-extras.batman
     fd
-    # neofetch
     bottom
     direnv
     unzip

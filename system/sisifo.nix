@@ -2,6 +2,7 @@
   imports = [
     ./hardware-sisifo.nix
     ./config.nix
+    ./printing.nix
   ];
   networking.hostName = "sisifo";
 

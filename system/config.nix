@@ -98,15 +98,4 @@
       options = "ctrl:swapcaps,grp:win_space_toggle";
     };
   };
-
-  # Printing
-  services.printing = {
-    enable = true;
-    drivers = [pkgs.hplipWithPlugin];
-  };
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
 }
