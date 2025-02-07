@@ -4,7 +4,6 @@
     ./config.nix
     ./steam.nix
     ./mc-server.nix
-    ./battery.nix
   ];
   networking.hostName = "dedalo";
 
