@@ -10,7 +10,7 @@
   # manage.
   home.username = "pourtz";
   home.homeDirectory = "/home/pourtz";
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
