@@ -27,6 +27,7 @@
     firefox
     qutebrowser
     discord
+    vesktop
     # spotify
     # yewtube
     zathura

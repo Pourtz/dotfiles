@@ -96,6 +96,14 @@
           diff.view.style = "number";
         };
       };
+
+      cord = {
+        enable = true;
+        settings = {
+          editor.tooltip = "Neovim";
+          text.workspace = "In some repo";
+        };
+      };
     };
   };
 }
