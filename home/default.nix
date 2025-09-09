@@ -32,7 +32,7 @@
     # yewtube
     zathura
     sioyek
-    # evince
+    evince
     piper # mouse config
     feh
     mpv
