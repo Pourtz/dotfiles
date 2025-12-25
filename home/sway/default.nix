@@ -15,13 +15,15 @@ in {
   # MAKO
   services.mako = {
     enable = true;
-    defaultTimeout = 10000;
+    settings = {
+      default-timeout = 10000;
 
-    # Catppuccin mocha
-    backgroundColor = "#1e1e2e";
-    textColor = "#cdd6f4";
-    borderColor = "#89b4fa";
-    progressColor = "over #313244";
+      # Catppuccin mocha
+      background-color = "#1e1e2e";
+      text-color = "#cdd6f4";
+      border-color = "#89b4fa";
+      progress-color = "over #313244";
+  };
   };
 
   # TOFI

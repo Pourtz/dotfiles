@@ -115,6 +115,7 @@
   services.ssh-agent.enable = true;
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     matchBlocks = {
       "p.github.com" = {
         hostname = "github.com";
@@ -150,10 +151,12 @@
 
   programs.git = {
     enable = true;
-    userName = "Pourtz";
-    userEmail = "pany182001@gmail.com";
+    settings = {
+      user.name = "Pourtz";
+      user.email = "pany182001@gmail.com";
+      init.defaultBranch = "main";
+    };
     lfs.enable = true;
-    extraConfig.init.defaultBranch = "main";
   };
 
   # fonts

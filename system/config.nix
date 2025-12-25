@@ -29,9 +29,7 @@
     consoleLogLevel = 3;
   };
 
-  services.logind.extraConfig = ''
-    HandlePowerKey=suspend
-  '';
+  services.logind.settings.Login.HandlePowerKey = "suspend";
 
   # Enable all firmware regardless of license
   hardware.enableAllFirmware = true;
@@ -88,10 +86,10 @@
   services.udisks2.enable = true;
   services.ratbagd.enable = true;
   services.onedrive.enable = true;
+  services.displayManager.gdm.enable = true;
 
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
     # Configure keymap
     xkb = {
       layout = "latam,us";

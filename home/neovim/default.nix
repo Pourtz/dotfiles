@@ -1,12 +1,15 @@
 { config, pkgs, lib, inputs, ... }: {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     ./options.nix
     ./keybinds.nix
     ./autocommands.nix
     ./plugins
   ];
   # home.packages = with pkgs; [ gcc gnumake git ripgrep fd unzip ];
+  home.packages = with pkgs; [
+    neovide
+  ];
   programs.nixvim = {
     enable = true;
     defaultEditor = true;

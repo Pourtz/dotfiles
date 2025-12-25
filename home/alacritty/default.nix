@@ -7,7 +7,7 @@
         live_config_reload = true;
       };
       font = {
-        normal.family = "JetBrains Mono";
+        normal.family = "JetBrains Mono NL";
         size = 9;
       };
       cursor = {
