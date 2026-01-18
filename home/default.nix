@@ -5,6 +5,7 @@
     ./sway
     ./neovim
     ./games.nix
+    ./ssh.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -110,32 +111,6 @@
           exec fish
       fi
     '';
-  };
-
-  services.ssh-agent.enable = true;
-  programs.ssh = {
-    enable = true;
-    enableDefaultConfig = false;
-    matchBlocks = {
-      "p.github.com" = {
-        hostname = "github.com";
-        user = "git";
-        identitiesOnly = true;
-        identityFile = [ "/home/pourtz/.ssh/personal" ];
-      };
-      "u.github.com" = {
-        hostname = "github.com";
-        user = "git";
-        identitiesOnly = true;
-        identityFile = [ "/home/pourtz/.ssh/institucional" ];
-      };
-      "u.gitlab.com" = {
-        hostname = "gitlab.com";
-        user = "git";
-        identitiesOnly = true;
-        identityFile = [ "/home/pourtz/.ssh/institucional" ];
-      };
-    };
   };
 
   programs.fish = {
