@@ -87,7 +87,7 @@
 
     ".config/onedrive/config".text = ''
       sync_dir = "~/OneDrive"
-      threads = "2"
+      threads = "1"
     '';
     ".config/bat" = {
       source = ./bat;
