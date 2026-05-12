@@ -27,19 +27,18 @@ set $menu tofi-drun | xargs swaymsg exec --
 
 ### Output configuration
 #
-output "AOC 24E1W1 PPCP2HA001473" {
+output "eDP-1" {
     background #313244 solid_color
     position 0 0
 }
-
-output "eDP-1" {
+output "HDMI-A-1" {
     background #313244 solid_color
-    position 1920 312
 }
+
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
 # output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-workspace "1" output "AOC 24E1W1 PPCP2HA001473"
+workspace "1" output "eDP-1"
 
 ### Idle configuration
 #
