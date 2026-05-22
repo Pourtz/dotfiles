@@ -90,6 +90,9 @@ in {
   programs.eww = {
     enable = true;
     package = pkgs.eww;
-    configDir = ./eww;
+  };
+  home.file.".config/eww" = {
+    source = ./eww;
+    recursive = true;
   };
 }

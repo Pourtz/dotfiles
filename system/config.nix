@@ -73,9 +73,6 @@
     extraGroups = [ "networkmanager" "wheel" "video" ];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [ neovim git ];
 
   security.polkit.enable = true;

@@ -8,29 +8,29 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "ehci_pci" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "ehci_pci" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/67aa187a-d540-4d73-879f-6602bc95af3d";
+    { device = "/dev/mapper/enc";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
   boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/5333924b-1fae-4d34-ace2-9713d9500fe1";
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/67aa187a-d540-4d73-879f-6602bc95af3d";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
-
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/67aa187a-d540-4d73-879f-6602bc95af3d";
+    { device = "/dev/mapper/enc";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/mapper/enc";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
     };
 
   fileSystems."/boot" =
@@ -42,14 +42,6 @@
   swapDevices =
     [ { device = "/dev/disk/by-uuid/ad5a9e44-388d-4240-8cf0-f52cac20a513"; }
     ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

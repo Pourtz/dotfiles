@@ -14,9 +14,20 @@
     };
   };
 
-  outputs = { self, home-manager, nixpkgs, nixvim, ... }@inputs: {
-    nixosConfigurations.sisifo = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+  outputs = { self, home-manager, nixpkgs, nixvim, ... }@inputs:
+  let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
+    };
+  in {
+    nixosConfigurations."sisifo" = nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = inputs // { inherit pkgs; };
       modules = [
         ./system/sisifo.nix
         home-manager.nixosModules.home-manager
@@ -30,8 +41,9 @@
       ];
     };
 
-    nixosConfigurations.dedalo = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+    nixosConfigurations."dedalo" = nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit pkgs; };
       modules = [
         ./system/dedalo.nix
         home-manager.nixosModules.home-manager

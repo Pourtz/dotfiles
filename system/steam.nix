@@ -6,9 +6,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-    "steam-run"
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   retroarch-full
+  # ];
 }

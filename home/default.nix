@@ -11,7 +11,6 @@
   # manage.
   home.username = "pourtz";
   home.homeDirectory = "/home/pourtz";
-  # nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -27,10 +26,8 @@
   home.packages = with pkgs; [
     firefox
     qutebrowser
-    discord
-    vesktop
-    # spotify
-    # yewtube
+    # discord
+    # vesktop
     zathura
     sioyek
     evince
@@ -54,12 +51,11 @@
     nix-output-monitor
     skim
     # darktable
-    tectonic
-    taskwarrior3
-    tasksh
-    timewarrior
-
-    sage
+    # tectonic
+    # taskwarrior3
+    # tasksh
+    # timewarrior
+    # sage
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

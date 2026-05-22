@@ -4,6 +4,7 @@
     itch
     prismlauncher
     heroic
+    retroarch-free
     # xwiimote
   ];
 }

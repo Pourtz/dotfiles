@@ -45,7 +45,6 @@ in {
     enable = true;
     wrapperFeatures.gtk = true;
   };
-  programs.light.enable = true;
 
   environment.systemPackages = with pkgs; [
     dbus # make dbus-update-activation-environment available in the path
@@ -67,8 +66,8 @@ in {
     swaybg
     tofi
     eww
-    light
     pulseaudio
+    brightnessctl
     # networkmanagerapplet
     # libsForQt5.plasma-nm
   ];
