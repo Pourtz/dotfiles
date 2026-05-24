@@ -5,6 +5,7 @@
     prismlauncher
     heroic
     retroarch-free
+    archipelago
     # xwiimote
   ];
 }
