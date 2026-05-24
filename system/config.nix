@@ -29,6 +29,7 @@
     consoleLogLevel = 3;
   };
 
+  boot.initrd.systemd.tpm2.enable = false;
   systemd.tpm2.enable = false;
 
   services.logind.settings.Login.HandlePowerKey = "suspend";
