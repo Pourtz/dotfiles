@@ -29,6 +29,8 @@
     consoleLogLevel = 3;
   };
 
+  systemd.tpm2.enable = false;
+
   services.logind.settings.Login.HandlePowerKey = "suspend";
 
   # Enable all firmware regardless of license
