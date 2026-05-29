@@ -47,6 +47,7 @@
     bottom
     direnv
     unzip
+    p7zip
     just
     nix-output-monitor
     skim
