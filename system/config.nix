@@ -73,7 +73,7 @@
   users.users.pourtz = {
     isNormalUser = true;
     description = "Pablo";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
   };
 
   environment.systemPackages = with pkgs; [ neovim git ];

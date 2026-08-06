@@ -26,12 +26,13 @@
   home.packages = with pkgs; [
     firefox
     qutebrowser
-    # discord
+    discord
     # vesktop
     zathura
     sioyek
     evince
     piper # mouse config
+    wl-clicker
     feh
     mpv
     libreoffice-fresh
