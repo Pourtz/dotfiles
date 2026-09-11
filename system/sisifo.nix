@@ -3,6 +3,7 @@
     ./hardware-sisifo.nix
     ./config.nix
     ./printing.nix
+    ./steam.nix
   ];
   networking.hostName = "sisifo";
 

@@ -31,7 +31,10 @@
       register = "unnamedplus";
       providers.wl-copy.enable = true;
     };
-    colorschemes.catppuccin.enable = true;
+    colorschemes.catppuccin = {
+      enable = true;
+      settings.flavour = "mocha";
+    };
     withRuby = false;
   };
 }

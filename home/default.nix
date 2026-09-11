@@ -36,6 +36,7 @@
     feh
     mpv
     libreoffice-fresh
+    qbittorrent
     # inkscape
     # telegram-desktop
     # zoom-us

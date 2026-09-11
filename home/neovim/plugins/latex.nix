@@ -7,7 +7,7 @@
     };
 
     # TeXpresso
-    plugins.texpresso.enable = true;
+    # plugins.texpresso.enable = true;
 
     # Vimtex
     plugins.vimtex = {
