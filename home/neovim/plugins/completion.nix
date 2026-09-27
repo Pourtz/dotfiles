@@ -2,12 +2,31 @@
   programs.nixvim = {
     plugins.cmp = {
       enable = true;
+      autoEnableSources = true;
+      filetype = {
+        rust = {
+          sources = [
+            { name = "nvim_lsp"; }
+          ];
+        };
+      };
       settings = {
         sources = [
-          # { name = "calc"; }
-          # { name = "fuzzy_path"; }
+          { name = "calc"; }
+          { name = "fuzzy_path"; }
+          { name = "fuzzy_buffer"; }
+
+          { name = "vimtex"; }
+          {
+            name = "latex_symbols";
+            option.strategy = 0;
+          }
+
           { name = "nvim_lsp"; }
           { name = "nvim_lua"; }
+          { name = "nvim_lsp_signature_help"; }
+          { name = "vsnip"; }
+          { name = "treesitter"; }
         ];
         snippet.expand = ''
           function(args)

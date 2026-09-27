@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./latex.nix
@@ -6,6 +6,8 @@
     ./completion.nix
   ];
   programs.nixvim = {
+    nixpkgs.pkgs = pkgs;
+
     plugins = {
       nix.enable = true;
 
@@ -21,9 +23,11 @@
 
       nvim-autopairs.enable = true;
 
-      # trim.enable = true;
+      trim.enable = true;
 
       rainbow-delimiters.enable = true;
+
+      # parinfer-rust.enable = true;
 
       project-nvim = {
         enable = true;
@@ -40,14 +44,28 @@
 
       treesitter = {
         enable = true;
-        folding.enable = true;
-        highlight.enable = true;
-        indent.enable = true;
+        highlight.enable = false;
       };
+      treesitter-context.enable = true;
 
       neo-tree.enable = true;
 
-      lsp.enable = true;
+      lsp = {
+        enable = true;
+        servers = {
+          rust_analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+            # config = {
+            #   settings.rust-analyzer.check.command = "clippy";
+            # };
+          };
+        };
+        # inlayHints.enable = true;
+        # inlineCompletion.enable = true;
+        # completion.enable = true;
+      };
 
       web-devicons.enable = true;
 
@@ -62,12 +80,17 @@
           shell = "fish";
         };
       };
+
       mini = {
         enable = true;
         modules = {
           diff.view.style = "number";
         };
       };
+
+      orgmode.enable = true;
+
+      origami.enable = true;
     };
   };
 }
