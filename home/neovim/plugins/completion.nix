@@ -19,7 +19,7 @@
           { name = "vimtex"; }
           {
             name = "latex_symbols";
-            option.strategy = 0;
+            option.strategy = 2;
           }
 
           { name = "nvim_lsp"; }
