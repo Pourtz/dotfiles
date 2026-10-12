@@ -10,8 +10,5 @@
       };
       fromLua = [ { paths = ./snippets; } ];
     };
-
-    # Cmp
-    plugins.cmp.settings.sources = [ { name = "luasnip"; } ];
   };
 }

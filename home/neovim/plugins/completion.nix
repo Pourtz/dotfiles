@@ -12,21 +12,31 @@
       };
       settings = {
         sources = [
-          { name = "calc"; }
-          { name = "fuzzy_path"; }
-          { name = "fuzzy_buffer"; }
-
+          { name = "vsnip"; }
+          { name = "treesitter"; }
           { name = "vimtex"; }
+
+          {
+            name = "luasnip";
+            priority = 1000;
+          }
+          { name = "fuzzy_path"; }
           {
             name = "latex_symbols";
             option.strategy = 2;
           }
 
+          {
+            name = "calc";
+            # priority = -9;
+          }
           { name = "nvim_lsp"; }
           { name = "nvim_lua"; }
           { name = "nvim_lsp_signature_help"; }
-          { name = "vsnip"; }
-          { name = "treesitter"; }
+          {
+            name = "fuzzy_buffer";
+            # priority = -10;
+          }
         ];
         snippet.expand = ''
           function(args)
