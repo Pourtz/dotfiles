@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Terminal emulator
-set $term alacritty
+set $term kitty
 set $browser qutebrowser
 # set $editor emacsclient -c -a 'emacs'
 set $editor neovide
@@ -257,7 +257,7 @@ font pango:JetBrains Mono 9.000000
 
 for_window [title="Steam - Update News"] floating enable
 for_window [class="Emacs"] opacity 0.8
-for_window [app_id="Alacritty"] opacity 0.8
+for_window [app_id="Kitty"] opacity 0.8
 for_window [app_id="org.pwmt.zathura"] opacity 0.95
 
 

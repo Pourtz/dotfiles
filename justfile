@@ -1,8 +1,11 @@
 build:
   sudo true; sudo nixos-rebuild switch --flake /home/pourtz/.dotfiles |& nom
 
+test:
+  sudo true; sudo nixos-rebuild test --flake /home/pourtz/.dotfiles |& nom
+
 debug:
-  nixos-rebuild switch --flake . --show-trace --verbose
+  nix flake check
 
 update:
   nix flake update |& nom

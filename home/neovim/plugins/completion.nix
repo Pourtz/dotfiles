@@ -12,30 +12,52 @@
       };
       settings = {
         sources = [
-          { name = "vsnip"; }
-          { name = "treesitter"; }
-          { name = "vimtex"; }
+          {
+            name = "vsnip";
+            group_index = 2;
+          }
+          {
+            name = "treesitter";
+            group_index = 2;
+          }
+          {
+            name = "vimtex";
+            group_index = 2;
+          }
 
           {
             name = "luasnip";
-            priority = 1000;
+            group_index = 1;
           }
-          { name = "fuzzy_path"; }
+          {
+            name = "fuzzy_path";
+            group_index = 2;
+          }
           {
             name = "latex_symbols";
             option.strategy = 2;
+            group_index = 3;
           }
 
           {
             name = "calc";
-            # priority = -9;
+            group_index = 3;
           }
-          { name = "nvim_lsp"; }
-          { name = "nvim_lua"; }
-          { name = "nvim_lsp_signature_help"; }
+          {
+            name = "nvim_lsp";
+            group_index = 2;
+          }
+          {
+            name = "nvim_lua";
+            group_index = 2;
+          }
+          {
+            name = "nvim_lsp_signature_help";
+            group_index = 2;
+          }
           {
             name = "fuzzy_buffer";
-            # priority = -10;
+            group_index = 4;
           }
         ];
         snippet.expand = ''

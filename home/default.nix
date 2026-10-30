@@ -1,6 +1,6 @@
 { config, pkgs, lib, inputs, ... }: {
   imports = [
-    ./alacritty
+    ./kitty
     ./starship.nix
     ./sway
     ./neovim
@@ -79,13 +79,14 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
     ".config/onedrive/config".text = ''
       sync_dir = "~/OneDrive"
+      skip_dotfiles = "true"
+      skip_symlinks = "true"
+      skip_dir = "Datos adjuntos"
+      skip_dir = "Microsoft Copilot Chat Files"
+      skip_file = "~*|.~*|*.tmp|*.swp|*.partial"
+      skip_file = "*.docx|*.rtf|*.xlsx"
       threads = "1"
     '';
     ".config/bat" = {
@@ -132,6 +133,14 @@
       init.defaultBranch = "main";
     };
     lfs.enable = true;
+  };
+
+  programs.yazi = {
+    enable = true;
+    shellWrapperName = "y";
+    # package = yazi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+    #   _7zz = pkgs._7zz-rar;  # Support for RAR extraction
+    # };
   };
 
   # fonts
