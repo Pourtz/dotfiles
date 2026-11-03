@@ -2,7 +2,6 @@
   services.desktopManager.gnome.enable = true;
   services.gnome.gcr-ssh-agent.enable = false;
   environment.gnome.excludePackages = with pkgs; [
-    gnome-photos
     gnome-tour
     gedit # text editor
     cheese # webcam tool
